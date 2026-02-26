@@ -1,0 +1,53 @@
+/*
+  Cabecalhos de seguranca para o Netlify
+*/
+
+/* Aplica a todos os arquivos */
+/*
+  X-Frame-Options: DENY -> Impede que seu site seja colocado em IFrames de outros sites (previne Clickjacking)
+  X-Content-Type-Options: nosniff -> Impede que o navegador tente adivinhar o tipo de arquivo, forçando o uso do que foi definido (previne ataques de MIME)
+  X-XSS-Protection: 1; mode=block -> Ativa o filtro de XSS do navegador
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;
+  Permissions-Policy: camera=(), microphone=(), geolocation=() -> Desativa acesso a hardware que seu site nao usa
+*/
+/*
+  Regras Netlify
+*/
+/*
+  Headers para o site inteiro
+*/
+/*
+  Nota: O Netlify lê este arquivo automaticamente ao subir a pasta.
+*/
+
+/*
+  Seguranca Final:
+*/
+/*
+  Link para documentacao Netlify sobre Headers: https://docs.netlify.com/routing/headers/
+*/
+
+/* Headers Reais */
+/*
+  O Netlify ignora comentarios se estiverem na mesma linha de uma regra. 
+  Entao vamos colocar as regras puras abaixo:
+*/
+
+/*
+  / 
+    X-Frame-Options: DENY
+    X-XSS-Protection: 1; mode=block
+    X-Content-Type-Options: nosniff
+    Referrer-Policy: strict-origin-when-cross-origin
+    Permissions-Policy: camera=(), microphone=(), geolocation=()
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+*/
+
+/* Regra Pura para o Arquivo */
+/
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
